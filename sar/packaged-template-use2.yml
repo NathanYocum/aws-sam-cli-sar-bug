@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: sam-build-test
+    Description: todo
+    Author: NathanYocum
+    HomePageUrl: https://nathanyocum.com
+    SourceCodeUrl: https://nathanyocum.com
+Resources:
+  HelloWorld:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://aws-sam-cli-managed-default-samclisourcebucket-lervxcmrq604/72beb1d6d7a79f05b4cb2e985bb41156
+      Handler: handler.handler
+      Runtime: python3.7

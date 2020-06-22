@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Mappings:
+  SAMBuildTest:
+    us-east-1:
+      ApplicationId: arn:aws:serverlessrepo:us-east-1:854484851566:applications/sam-build-test
+      SemanticVersion: 0.0.2
+    us-east-2:
+      ApplicationId: arn:aws:serverlessrepo:us-east-2:854484851566:applications/sam-build-test
+      SemanticVersion: 0.0.2
+    us-west-2:
+      ApplicationId: arn:aws:serverlessrepo:us-west-2:854484851566:applications/sam-build-test
+      SemanticVersion: 0.0.2
+Resources:
+  SAMBuildSAR:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location:
+        ApplicationId: !FindInMap [ SAMBuildTest, !Ref AWS::Region, ApplicationId ]
+        SemanticVersion: !FindInMap [ SAMBuildTest, !Ref AWS::Region, SemanticVersion ]
+
